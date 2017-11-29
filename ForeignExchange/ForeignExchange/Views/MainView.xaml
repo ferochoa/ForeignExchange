@@ -20,6 +20,7 @@
             </Label>
             <Entry
                 BackgroundColor="White"
+                Text="{Binding Amount , Mode=TwoWay}"
                 Placeholder="Enter the amount to convert" >
             </Entry>
             <Label 
@@ -27,7 +28,10 @@
                 TextColor="Black">
             </Label>
             <Picker
-                BackgroundColor="White"                
+                BackgroundColor="White"    
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding Rates}"
+                SelectedItem="{Binding SourceRate , Mode=TwoWay}"
                 Title="Selec a Source Rate...">                             
             </Picker>
             <Label
@@ -35,17 +39,22 @@
                 TextColor="Black">                
             </Label>
             <Picker
-                BackgroundColor="White"
-                Title="Select a target rate...">                      
+                BackgroundColor="White"    
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding Rates}"
+                SelectedItem="{Binding TargetRate , Mode=TwoWay}"
+                Title="Selec a Target Rate...">
             </Picker>
-            <ActivityIndicator>
-                
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning , Mode=TwoWay}">
             </ActivityIndicator>
             <Button
+                Command="{Binding ConverteCommmand}"
                 BackgroundColor="Black"
                 BorderRadius="25"
                 HeightRequest="50"
                 FontAttributes="Bold"
+                IsEnabled="{Binding IsEnable , Mode=TwoWay}"
                 Text="Convert"
                 TextColor="White">                
             </Button>
@@ -54,7 +63,7 @@
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
                 Margin="0,10"
-                Text="Loading rates..."
+                Text="{Binding Result , Mode=TwoWay}"
                 VerticalOptions="FillAndExpand"
                 VerticalTextAlignment="Center">                
             </Label>
