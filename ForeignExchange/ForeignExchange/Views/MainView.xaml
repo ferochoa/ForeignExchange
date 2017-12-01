@@ -1,45 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ForeignExchange.Views.MainView"
-             BackgroundColor="Yellow"
+             x:Class="ForeignExchange.Views.MainView"            
              BindingContext="{Binding Main , Source={StaticResource Locator}}">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="20,30,20,10"
+            Android="20,20,20,10">
+        </OnPlatform>
+    </ContentPage.Padding>
+        
     <ContentPage.Content>
-        <StackLayout
-            Padding="20,30,20,10">
+        <StackLayout>
             <Label 
                 FontAttributes="Bold"
                 FontSize="Large"                
                 HorizontalOptions="Center"
-                Text="Foreign Exchange"
-                TextColor="Black">
+                Text="Foreign Exchange">
             </Label>
             <Label 
-                Text="Amount"
-                TextColor="Black">
+                Text="Amount">
             </Label>
-            <Entry
-                BackgroundColor="White"
+            <Entry               
                 Text="{Binding Amount , Mode=TwoWay}"
                 Placeholder="Enter the amount to convert" >
             </Entry>
             <Label 
-                Text="Source Rate"
-                TextColor="Black">
+                Text="Source Rate">
             </Label>
-            <Picker
-                BackgroundColor="White"    
+            <Picker               
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding Rates}"
                 SelectedItem="{Binding SourceRate , Mode=TwoWay}"
                 Title="Selec a Source Rate...">                             
             </Picker>
             <Label
-                Text="Target rate:"
-                TextColor="Black">                
+                Text="Target rate:">
             </Label>
-            <Picker
-                BackgroundColor="White"    
+            <Picker                  
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding Rates}"
                 SelectedItem="{Binding TargetRate , Mode=TwoWay}"
